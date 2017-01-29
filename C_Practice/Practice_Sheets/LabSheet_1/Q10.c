@@ -9,7 +9,7 @@ int main()
   Area = PI*(R*R);
   Perimeter = 2*PI*R;
 
-  printf("The Area is of a circle is %d sq. units.\n" , Area);
+  printf("The Area of a circle is %d sq. units.\n" , Area);
   printf("The Perimeter of a circle is %d sq. units.\n" , Perimeter);
   return 0;
 }
