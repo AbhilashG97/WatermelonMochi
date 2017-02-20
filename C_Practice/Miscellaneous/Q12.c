@@ -2,11 +2,11 @@
 
 int main() 
 {
-    int num, rem, count = 0, arr[100], b[100], m;
+    int num, rem, count = 0, arr[100], b[100], k, i, c;
     printf("Enter a number.\n");
     scanf("%d", &num);
 
-    for (int i=1; num > 0; i++) 
+    for (i=1; num > 0; i++) 
     {
         rem = num % 10;
         arr[i-1] = rem;
@@ -15,15 +15,19 @@ int main()
         count = count + 1;
     }
 
-    for (int k = 0; m = count;  k++ ) 
+    c = count ;
+    printf("%d digits.\n", c);
+
+    for (k = 0; k <= count ; k ++) 
     {
-        b[k] = arr[m];
+        b[k] = arr[c-1];
+        c --;
     }
 
     for (int j = 0; j < count ; j++) 
     {
 
-        switch(arr[j]) {
+        switch(b[j]) {
             case 1 : printf("one ");
                      break;
             case 2 : printf("two ");
