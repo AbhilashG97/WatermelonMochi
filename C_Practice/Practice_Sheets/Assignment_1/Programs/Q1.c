@@ -2,57 +2,39 @@
 
 int main () 
 {   
-    // N is the number of apples.
-    // M is the number of oranges.
-    // K is the number of gold coins.
-    // T is the number of test cases.
-
-    int N, M, K, T, diff=0, count1 = 0, count2 = 0;
+    int N, M, K, T;
     scanf("%d", &T);
-
-    // Number of test cases.
     for (int i =1; i<=T; i++) 
     {
         scanf("%d %d %d", &N, &M, &K);
-
-            if (N>M) 
+        if(N>M) 
+        {
+            for (int j =1; j <=K; j++) 
             {
-                diff = N - M;
-                if ( diff != 1) 
-                {
-                    for (int j = 1 ; diff > 0; j++) 
-                    {
-                        diff = N - M;
-                        if (diff == 1) {break;}
-                        M++;
-                        count1 = count1 + 1;
-                    }
-                }
-            } else {
-                diff = M - N;
-                if (diff != 1) 
-                {
-                    for (int z = 1; diff > 0; z++) 
-                    {
-                        diff = M - N;
-                        if(diff == 1) {break;}
-                        N++;
-                        count2 = count2 + 1;
-                    }
-                }
+                M = M + 1;
             }
-            if (N>M) 
+        } else if (M>N) 
+        {
+            for (int k = 1; k <=K; k++) 
             {
-                printf("%d\n", count1);
-            } else 
-            {
-                printf("%d\n", count2);
+                N = N + 1;
             }
-            count1 = 0;
-            count2 = 0;
+        } else 
+        {
+            break;
         }
 
+        if (N>M) 
+        {
+            printf("%d\n", N-M);
+        } else 
+        {
+            printf("%d\n", M-N);
+        }
 
+        M = 0;
+        N = 0;
+    }
           return 0;
     }
 

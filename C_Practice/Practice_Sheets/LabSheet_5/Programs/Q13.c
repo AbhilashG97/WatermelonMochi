@@ -3,27 +3,21 @@
 
 int main () 
 {
-        char input[100], c;
-        int vow=0, conso=0;
+        char input[100] , c;
+        int vow=0, conso=0, len;
 
-        printf("Enter a string.\n");
-        fgets(input);
+        input = getchar();
+        while ((c = getchar()) != EOF) 
+        {
+                if (c == ('a' || 'e' || 'i' || 'o' || 'u')) 
+                {
+                        vow = vow + 1;
+                } else 
+                {
+                        conso = conso + 1;
+                }
+        }
 
-        printf("%s", input);
-
-        // for (int i = 0; input[i] != '\0'; i++ ) 
-        // {
-        //     if (input[i] = ('a'||'e'||'i'||'o'||'u'))
-        //     {
-        //         vow = vow + 1;
-
-        //     } else 
-        //     {
-        //         conso = conso + 1;
-        //     }
-        // }
-
-        // printf("The number of vowels and consonants are : %d , %d\n", vow, conso);
-
+        printf("Vowels : %d\nConsonants : %d\n", vow, conso);
         return 0; 
 }
