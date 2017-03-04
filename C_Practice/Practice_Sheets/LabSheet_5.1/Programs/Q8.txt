@@ -1,0 +1,6 @@
+OUTPUTS
+
+a) 9
+b) 10
+c) error: expected ‘)’ before ‘;’ token
+     for (i=0;i<10;i++;j--)
