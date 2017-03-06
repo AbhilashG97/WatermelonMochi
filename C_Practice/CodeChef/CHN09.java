@@ -1,7 +1,9 @@
-# include <stdio.h>
-# include <string.h>
+import java.util.scanner;
 
-int main() 
+class CHN09
+{
+
+public static void main (String args[]) 
 {
     int T, a=0, b=0, len;
     char input[100], key;
@@ -34,4 +36,7 @@ int main()
     }
 
     return 0;
+}
+}
+
 }
