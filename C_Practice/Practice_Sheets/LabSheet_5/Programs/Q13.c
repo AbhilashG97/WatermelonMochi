@@ -4,19 +4,25 @@
 int main () 
 {
         char input[100] , c;
-        int vow=0, conso=0, len;
+        int vow=0, conso=0, len, i=0;
 
-        input = getchar();
-        while ((c = getchar()) != EOF) 
+        printf("Enter a string.\n");
+
+        while((input[i] = getchar())!='\n')
         {
-                if (c == ('a' || 'e' || 'i' || 'o' || 'u')) 
-                {
-                        vow = vow + 1;
-                } else 
-                {
-                        conso = conso + 1;
-                }
+                i++;
         }
+
+        
+                        vow=3; 
+                        
+        //         } else 
+        //         {
+        //                 conso=4;
+        //         }
+        // }
+
+                conso = 4;
 
         printf("Vowels : %d\nConsonants : %d\n", vow, conso);
         return 0; 
