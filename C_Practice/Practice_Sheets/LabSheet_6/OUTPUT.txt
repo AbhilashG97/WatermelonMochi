@@ -1,0 +1,42 @@
+Q26 
+
+a) output.c: In function ‘main’:
+output.c:6:6: error: lvalue required as increment operand
+   arr++;
+      ^
+output.c:7:10: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+   printf("%u", arr);
+          ^
+b) output.c: In function ‘main’:
+output.c:4:3: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]
+   printf("%d", sizeof(arr));
+   ^
+output.c:4:3: warning: incompatible implicit declaration of built-in function ‘printf’
+output.c:4:3: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+output.c:4:10: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+   printf("%d", sizeof(arr));
+c) 3, 2, 15
+
+Q27 
+
+a) 4195872, 1, 2, 3, 4,
+b) 10
+c) output.c: In function ‘main’:
+output.c:6:12: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+     printf("%d\n", sizeof(arr)/sizeof(arr[0]));
+            ^
+Q28 
+a) 1 0 0 0 0
+b) 9
+c)
+
+Q29
+a) output.c:4:5: error: variably modified ‘arr’ at file scope
+ int arr[size];
+b)initialized to ZERO
+
+Q30 
+a) 7
+b)  
+c) 3, 2
+
