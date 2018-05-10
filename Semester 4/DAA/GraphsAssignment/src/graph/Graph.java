@@ -133,10 +133,8 @@ public class Graph {
         }
                    
         for(int i : topOrder) {
-            System.out.print(i+" ");
             sortedValues.add(i);
         }
-        System.out.println();
     }
 
 	
@@ -239,12 +237,10 @@ public class Graph {
  
         // Now ap[] contains articulation points, print them
         for (int i = 0; i < vertices; i++) {
-        	System.out.print(i+" ");
             if (ap[i] == true) {
-                System.out.print(i+" ");
+                System.out.print(vertexValues.get(i)+" ");
             }
         }
-        System.out.println("\n"+vertexValues.get(rootVertex));
 
     }
     

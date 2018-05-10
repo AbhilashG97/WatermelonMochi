@@ -39,7 +39,7 @@ public class Demo {
 		// Reads from the input.dat input file line by line and stores the String values
 		// in an ArrayList
 
-		try(BufferedReader reader = new BufferedReader(new FileReader(new File("src\\input.dat")))) {
+		try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/input.dat")))) {
 			String line;
 			while((line = reader.readLine()) != null) {
 				adjacentVertices.add(line);
@@ -71,16 +71,13 @@ public class Demo {
 			while(scanner.hasNext()) {
 				String element = scanner.next();
 				if(i % 2 == 0) {					
-					//System.out.print(vertex + "" + element+" ");
 					graph.addDirectedEdge(vertex, Integer.valueOf(element));
 				}
 				++i;
 			}
 
 			if(count == 7) {
-				System.out.println();
 				graph.topologicalSort();
-				System.out.println();
 
 				ArrayList<String> sortedValues = new ArrayList<>();
 
@@ -91,8 +88,6 @@ public class Demo {
 				new DisplayData<String>(sortedValues).getjFrame().setVisible(true);
 				break;
 			}
-
-			System.out.println();
 			vertex++;
 			count++;
 		}
@@ -113,14 +108,9 @@ public class Demo {
 
 		for(String value : adjacentVertices) {
 
-			if(lineCount >= 15) {
-				//System.out.println(lineCount);
-
-				// End of graph input reached
-				if(count == 7) {
-					break;
-				}
-
+			if(lineCount >= 15 && lineCount <= 21) {
+				System.out.println(lineCount);
+				
 				Scanner scanner = new Scanner(value);
 				scanner.useDelimiter("\\s+");
 
@@ -142,12 +132,11 @@ public class Demo {
 				vertex++;
 				count++;
 			}
-
 			lineCount++;
 		}
 
 		WeightedGraph weightedGraph = new WeightedGraph(8, numberOfEdges);
-		for(int j=0; j<destinationList.size(); j++) {
+		for(int j=0; j<vertex-1; j++) { // TODO(1) : Calculate the number of vertices and set that as the limit
 			weightedGraph.setValue(j, 
 					sourceList.get(j), 
 					destinationList.get(j),
@@ -163,45 +152,46 @@ public class Demo {
 	public static void findArticulationPoints() {
 
 		Graph undirectedGraph = new Graph(9);
-		undirectedGraph.resetGraph();
 
-		int count = 1, vertex = 1, sourceVertex = 0, lineCount = 1;
-
+		int vertex = 1, sourceVertex = 0, lineCount = 1;
 		for(String value : adjacentVertices) {
 
-			if(lineCount >= 22) {
+			if(lineCount >= 22 && lineCount <=37) {
 
 				Scanner scanner = new Scanner(value);
 				scanner.useDelimiter("\\s+");
 
-				//System.out.println(lineCount);
-
-				if(count == 8) {
-					sourceVertex = Integer.valueOf(scanner.next()); // get the source vertex
-					System.out.println(count+" "+sourceVertex);
-					undirectedGraph.printArticulationPoints(sourceVertex);
-					break;
+				if(lineCount == 29) {
+					// Graph 4
+						sourceVertex = Integer.valueOf(scanner.next()); // get the source vertex
+						System.out.println("For the fourth graph, the articulation points are: ");
+						undirectedGraph.printArticulationPoints(sourceVertex);
+						undirectedGraph.clearAdjacencyList();
+						vertex = 0;
+				} else if (lineCount == 37) {
+					// Graph 5
+						sourceVertex = Integer.valueOf(scanner.next()); // get the source vertex
+						System.out.println("For the fourth graph, the articulation points are: ");
+						undirectedGraph.printArticulationPoints(sourceVertex);
+						break;	
 				} else {
 					scanner.next(); // get rid of the first elements
 				}
 
-				int i= 0;
+				int i = 0;
 
 				while(scanner.hasNext()) {
 
 					String element = scanner.next();
 					if(i % 2 == 0) {					
-						System.out.print(vertex + "" + element+" ");
-						undirectedGraph.addUndirectedEdge(vertex, Integer.valueOf(element));
+						//System.out.print(vertex + "" + element+" ");
+						undirectedGraph.addDirectedEdge(vertex, Integer.valueOf(element));
 					}
-
 					++i;
 				}
 				System.out.println();
-				vertex++;
-				count++;
+				vertex++;				
 			}
-
 			lineCount++;
 		}
 
@@ -234,14 +224,14 @@ public class Demo {
 					}
 					++i;
 				}
-				
+
 				// End of graph input reached
 				if(count == 7) {
 					System.out.println();
 					directedGraph.printSCCs();
 					break;
 				}
-				
+
 				System.out.println();
 				vertex++;
 				count++;
@@ -258,7 +248,7 @@ public class Demo {
 
 		doTopologicalSort(); // Topological sort of a DAG
 
-		try {createMinimumSpanningTree();} catch(Exception e) {}  // Minimum spanning tree
+		//createMinimumSpanningTree(); // Minimum spanning tree
 		System.out.println();
 
 		findArticulationPoints(); // find the articulation points in graph
