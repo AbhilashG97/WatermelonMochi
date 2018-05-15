@@ -310,4 +310,18 @@ public class Graph {
             }
         }
     }
+    
+    public int getNumberOfEdges() {
+    	int numberOfEdges = 0;
+    	 
+        //traverse all vertex
+        for (int i = 0 ; i < vertices ; i++) {
+            
+            // add all edge that are linked to the
+            // current vertex
+        	numberOfEdges += adjacencyList[i].size();
+        }
+        return numberOfEdges;
+    }
+
 }

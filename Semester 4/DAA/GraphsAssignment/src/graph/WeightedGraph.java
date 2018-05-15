@@ -44,6 +44,7 @@ public class WeightedGraph {
 		setVertexValues();
 		vertices = v;
 		edges = e;
+		
 		edgeArray = new Edge[edges];
 		for (int i=0; i<e; ++i) {
 			edgeArray[i] = new Edge();

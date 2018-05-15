@@ -99,28 +99,30 @@ public class Demo {
 	 */
 
 	private static void createMinimumSpanningTree() {
-
+		
+		Graph testGraph = new Graph(8);
+		
 		ArrayList<Integer> sourceList = new ArrayList<>(), 
 				destinationList = new ArrayList<>(),
 				weightList = new ArrayList<>();
 
-		int count = 1, vertex = 1, numberOfEdges = 0, lineCount = 1;
+		int vertex = 1, lineCount = 1;
 
 		for(String value : adjacentVertices) {
 
 			if(lineCount >= 15 && lineCount <= 21) {
-				System.out.println(lineCount);
 				
 				Scanner scanner = new Scanner(value);
 				scanner.useDelimiter("\\s+");
-
-				numberOfEdges += Integer.valueOf(scanner.next());  // get the total number of edges in the graph
+				
+				scanner.next(); // get rid of the first integer in a line 
+				  
 				int i= 0;
 
 				while(scanner.hasNext()) {
 					String element = scanner.next();
 					if(i % 2 == 0) {					
-						System.out.print(vertex + "" + element+" ");
+						testGraph.addDirectedEdge(vertex, Integer.valueOf(element));
 						destinationList.add(Integer.valueOf(element));
 						sourceList.add(Integer.valueOf(vertex));
 					}else {
@@ -130,13 +132,14 @@ public class Demo {
 				}
 				System.out.println();
 				vertex++;
-				count++;
 			}
 			lineCount++;
 		}
-
-		WeightedGraph weightedGraph = new WeightedGraph(8, numberOfEdges);
-		for(int j=0; j<vertex-1; j++) { // TODO(1) : Calculate the number of vertices and set that as the limit
+		testGraph.printGraph();
+		System.out.println(testGraph.getNumberOfEdges());
+		WeightedGraph weightedGraph = new WeightedGraph(8, testGraph.getNumberOfEdges());
+		
+		for(int j=0; j<8; j++) {
 			weightedGraph.setValue(j, 
 					sourceList.get(j), 
 					destinationList.get(j),
@@ -247,8 +250,12 @@ public class Demo {
 		new Demo();
 
 		doTopologicalSort(); // Topological sort of a DAG
-
-		//createMinimumSpanningTree(); // Minimum spanning tree
+		
+		try {
+			createMinimumSpanningTree(); // Minimum spanning tree
+		}catch (RuntimeException re) {
+			System.err.println(re);
+		} 
 		System.out.println();
 
 		findArticulationPoints(); // find the articulation points in graph
