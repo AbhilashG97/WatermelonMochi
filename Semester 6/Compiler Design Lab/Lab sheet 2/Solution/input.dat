@@ -1,0 +1,3 @@
+if (txn >= 20)
+    rxn = txn * 100; 
+else rxn = txn - 10; 
