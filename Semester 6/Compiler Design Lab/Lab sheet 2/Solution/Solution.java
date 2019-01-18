@@ -93,7 +93,6 @@ public class Solution {
         solution.isIdentifier(input);
         System.out.println("------------");
         solution.isFunction(input);
-        System.out.println("------------");
         //solution.isIfStatement(input);
         System.out.println("------------"); 
         solution.isComment(input);
