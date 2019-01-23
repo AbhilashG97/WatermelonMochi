@@ -1,6 +1,4 @@
- \
- 
- # Labsheet 1
+# Labsheet 1
 
 ## Popular Network Commands
 
@@ -100,32 +98,33 @@ It is a command that allows a user to enter a host name and find out the corresp
 
 ### Tasks 
 
-1.  What is a Loopback Address?
+What is a Loopback Address?
 
 A loopback address is a type of IP address that is used to test the communication or transportation medium on a local network card and/or for testing network applications. Data packets sent on a loopback address are re-routed back to the orginating node without any alteration or modification.
 
-1. Difference between IP address and default gateway
+Difference between IP address and default gateway
 
 The **default gateway** is a pathway where an IPv4/IPv6 address that is assign to a router. The function of a default gateway is to route packets out to the Internet (WAN) where other web servers/services are.
 
 IP address is used to identity a device so that routers would know where packets should be sent, to the source IP address that originally made a request packet to an intended server from the Internet.
 
-1. Difference between TCP and UDP 
+Difference between TCP and UDP 
 
 Both TCP and UDP are protocols used for sending bits of data — known as packets — over the Internet.
 
-    1.  **TCP**
-        TCP stands for Transmission Control Protocol. It is the most commonly used protocol on the Internet.
+1.  **TCP**
 
-        TCP is all about this reliability — packets sent with TCP are tracked so no data is lost or corrupted in transit. There is constant communication between the sender and the receiver when the exchange of packects take place. This ensures that the packets are not lost. Packets are also checked for errors.
+    TCP stands for Transmission Control Protocol. It is the most commonly used protocol on the Internet.
 
-    2. **UDP**
+    TCP is all about this reliability — packets sent with TCP are tracked so no data is lost or corrupted in transit. There is constant communication between the sender and the receiver when the exchange of packects take place. This ensures that the packets are not lost. Packets are also checked for errors.
 
-        UDP stands for User Datagram Protocol — a datagram is the same thing as a packet of information.
+1. **UDP**
 
-        The UDP protocol works similarly to TCP, but it throws all the error-checking stuff out. All the back-and-forth communication and deliverability guarantees slow things down. 
+    UDP stands for User Datagram Protocol — a datagram is the same thing as a packet of information.
 
-        When using UDP, packets are just sent to the recipient. The sender will not wait to make sure the recipient received the packet — it will just continue sending the next packets.
+    The UDP protocol works similarly to TCP, but it throws all the error-checking stuff out. All the back-and-forth communication and deliverability guarantees slow things down. 
+
+    When using UDP, packets are just sent to the recipient. The sender will not wait to make sure the recipient received the packet — it will just continue sending the next packets.
 
 1. Difference between DHCP and DNS server
 
@@ -138,10 +137,10 @@ Both TCP and UDP are protocols used for sending bits of data — known as packet
 | Working methodology | Decentralized                                                                                        | Centralized                                                                                             |
 | Advantage           | Eliminate the need to remember the IP address; instead, the domain name is used for the web address. | Reliable IP address configuration and reduced network administration                                    |
 
-1. Difference between ping and traceroute 
+Difference between ping and traceroute 
 
 The main difference between ```Ping```and ```Traceroute``` is that Ping is a quick and easy utility to tell if the specified server is reachable and how long will it take to send and receive data from the server whereas Traceroute finds the exact route taken to reach the server and time taken by each step (hop).
 
-1.  Difference between arp and dns
+Difference between ```arp``` and DNS
 
-    DNS (Domain Name System) server translates domain names to IP addresses so browsers can load Internet resources. The arp tool on the other hand lists all the ip address and MAC addresses.
+DNS (Domain Name System) server translates domain names to IP addresses so browsers can load Internet resources. The arp tool on the other hand lists all the ip address and MAC addresses.
