@@ -1,0 +1,40 @@
+import java.io.*;
+
+class Watermelon {
+
+	public static void main(String[] args) throws IOException{
+		 Yylex lex = new Yylex(System.in);
+		 Token token = lex.yylex();
+
+		 while(token.text != null) {
+		 	token = lex.yylex();
+		 } 
+	}
+}
+
+class Token {
+
+	String text;
+
+	Token(String text) {
+		this.text = text;
+	}
+}
+
+%%
+%public
+%class Yylex
+%type void
+digit = [0-9]
+letter = [a-zA-Z]
+special = [!@#$%^&*()_+]
+whitespace = [\t\n]
+%type Token 
+%eofval{
+return new Token(null);
+%eofval}
+%%
+
+[Pp]{letter}{letter}{letter}[Tt]
+{System.out.print("<Letter starting with P or p and ending with T or t," + yytext() + ">");}
+{whitespace}+ {/*Skip white spaces*/} 
