@@ -16,4 +16,6 @@ System.exit(0);
 "string" {System.out.println("LA "+yytext());return new Symbol(sym.STRING);}
 [a-z][a-z0-9]* {System.out.println("LA "+yytext());
 return new Symbol(sym.ID,new String(yytext()));} 
+[\r|\n|\r\n]+ {System.out.println("LA "+yytext());return new Symbol(sym.NEWLINE);}
+"float" {System.out.println("LA "+yytext());return new Symbol(sym.FLOAT);} 
 [\n\r] {System.out.println("LA"+"EOF");return new Symbol(sym.EOFILE);} 

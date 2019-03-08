@@ -207,19 +207,26 @@ class Yylex implements java_cup.runtime.Scanner {
 		/* 13 */ YY_NO_ANCHOR,
 		/* 14 */ YY_NO_ANCHOR,
 		/* 15 */ YY_NO_ANCHOR,
-		/* 16 */ YY_NO_ANCHOR
+		/* 16 */ YY_NO_ANCHOR,
+		/* 17 */ YY_NO_ANCHOR,
+		/* 18 */ YY_NO_ANCHOR,
+		/* 19 */ YY_NO_ANCHOR,
+		/* 20 */ YY_NO_ANCHOR,
+		/* 21 */ YY_NO_ANCHOR
 	};
 	private int yy_cmap[] = unpackFromString(1,130,
-"0:10,12,0:2,12,0:18,3,0:11,2,0:3,4:10,0,1,0:37,11:6,10,11,5,11:4,6,11:3,9,8" +
-",7,11:6,0:5,13:2")[0];
+"0:10,12,0:2,12,0:18,3,0:11,2,0:3,4:10,0,1,0:37,16,11:4,13,10,11,5,11:2,14,1" +
+"1,6,15,11:2,9,8,7,11:6,0,12,0:3,17:2")[0];
 
-	private int yy_rmap[] = unpackFromString(1,17,
-"0,1:3,2,3,1:2,4:2,5,6,7,8,9,4,10")[0];
+	private int yy_rmap[] = unpackFromString(1,22,
+"0,1:3,2,3,4,1,5:2,6,7,8,9,10,11,12,13,5:2,14,15")[0];
 
-	private int yy_nxt[][] = unpackFromString(11,14,
-"-1,1,2,3,4,5,15:2,16,15:3,6,7,-1:18,4,-1:13,15:2,10,15:5,-1:6,15:8,-1:6,15:" +
-"3,8,15:4,-1:6,15:5,12,15:2,-1:6,15,13,15:6,-1:6,15:2,14,15:5,-1:6,15:6,9,15" +
-",-1:6,15:3,11,15:4,-1:2");
+	private int yy_nxt[][] = unpackFromString(16,18,
+"-1,1,2,3,4,5,19:2,20,19:3,6,21,19:3,7,-1:22,4,-1:17,19:2,10,19:5,-1,19:4,-1" +
+":13,6,-1:9,19:8,-1,19:4,-1:5,19:3,8,19:4,-1,19:4,-1:5,19:5,13,19:2,-1,19:4," +
+"-1:5,19:8,-1,19:2,14,19,-1:5,19,15,19:6,-1,19:4,-1:5,19:8,-1,19:3,16,-1:5,1" +
+"9:2,17,19:5,-1,19:4,-1:5,19:3,18,19:4,-1,19:4,-1:5,19:6,9,19,-1,19:4,-1:5,1" +
+"9:3,11,19:4,-1,19:4,-1:5,19:8,-1,19,12,19:2,-1");
 
 	public java_cup.runtime.Symbol next_token ()
 		throws java.io.IOException {
@@ -288,7 +295,7 @@ return new Symbol(sym.ID,new String(yytext()));}
 					case -6:
 						break;
 					case 6:
-						{System.out.println("LA"+"EOF");return new Symbol(sym.EOFILE);}
+						{System.out.println("LA "+yytext());return new Symbol(sym.NEWLINE);}
 					case -7:
 						break;
 					case 7:
@@ -337,6 +344,31 @@ return new Symbol(sym.ID,new String(yytext()));}
 						{System.out.println("LA "+yytext());
 return new Symbol(sym.ID,new String(yytext()));}
 					case -17:
+						break;
+					case 17:
+						{System.out.println("LA "+yytext());
+return new Symbol(sym.ID,new String(yytext()));}
+					case -18:
+						break;
+					case 18:
+						{System.out.println("LA "+yytext());
+return new Symbol(sym.ID,new String(yytext()));}
+					case -19:
+						break;
+					case 19:
+						{System.out.println("LA "+yytext());
+return new Symbol(sym.ID,new String(yytext()));}
+					case -20:
+						break;
+					case 20:
+						{System.out.println("LA "+yytext());
+return new Symbol(sym.ID,new String(yytext()));}
+					case -21:
+						break;
+					case 21:
+						{System.out.println("LA "+yytext());
+return new Symbol(sym.ID,new String(yytext()));}
+					case -22:
 						break;
 					default:
 						yy_error(YY_E_INTERNAL,false);

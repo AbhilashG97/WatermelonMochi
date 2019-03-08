@@ -1,7 +1,7 @@
 import java_cup.runtime.*;
 
 scan with {: return getScanner().next_token(); :};
-terminal INT, STRING, SEMI, COMMA, ID, SPACE, EOFILE;
+terminal INT, STRING, SEMI, COMMA, ID, SPACE, EOFILE, FLOAT, NEWLINE;
 non terminal prog, stmt, decln, varlist, type, s, progstmt;
 s ::= prog {: System.out.println("Valid declaration"); :}
 EOFILE {: System.exit(0); :};
