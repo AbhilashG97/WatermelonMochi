@@ -31,3 +31,5 @@ There are two widely used socket types -
 
 1. stream sockets
 1. datagram sockets
+
+### Implement the communication between 2 client and a single server

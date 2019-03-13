@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 
 int main(){
 
@@ -38,8 +39,9 @@ int main(){
 		if((childpid = fork()) == 0) 
 		{	
 			close(sockfd); // release the connection
-			write(newsockfd, "Hi!", 4);
 			read(newsockfd, msg, 5);
+
+			write(newsockfd, strupr(msg), 4);
 			printf("%s\n", msg);
 			exit(0);
 		}
