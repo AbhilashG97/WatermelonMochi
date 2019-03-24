@@ -131,3 +131,101 @@ Here is how a demultiplexing service is implemented -
 Each socket in the host is assigned a port number, and when a segment arrives at the host, the transport layer examines the destination port number in the segment and directs the segment to the corresponding socket. 
 
 The segment's data then passes through the socket into the attached process. This is how demultiplexing works in ```UDP```, however for TCP the process is a bit different.
+
+## Connectionless Multiplexing and Demultiplexing 
+
+:warning: Transport layer assigns a port in the range 1024 to 65535 that is currently not being used by any other ```UDP``` port in the host.
+
+Typically, the client side of the application lets the transport layer automatically assign the port number, whereas the server side of the application assigns a specific port number.
+
+To understand multiplexing and demultiplexing in a ```UDP``` network, let us consider two hosts A and B which have the 1025 and 1045 as their port number respectively. 
+
+On the host side, the data from the port 1025 is taken by the transport layer and converted into a segment with approporiate information filled in the header. The segment is then taken up by the network layer which encapsulates the segment inside the network-layer datagram and makes a best-effort attempt to deliver the information to the host A. 
+
+On the receiving side, if the data reaches host B, the transport layer examines the segment and delivers the data to correct socket depending upon the value present in the destination port. 
+
+:warning: Please note that a ```UDP``` socket is fully identified by both the **IP address** and the **port number**.
+
+:warning: The server uses the ```source port number``` to send an acknowledgment message back to the client. Hence, the source port number is also specified in the header of the transport-layer segment.
+
+:warning: Here, if two ```UDP``` segments have different source ```IP``` addresses and/or source port number, but have the same destination ```IP``` address and destination port number, then the two segments will be directed to the same destination process via the same destinatoin socket.
+
+## Connection-Oriented Multiplexing and Demultiplexing
+
+:warning: A ```UDP``` is identified by a two-tuple, but the ```TCP``` on the other hand is identifed by a four-tuple. 
+
+In case of a ```TCP``` network, the following are required - 
+
+1. Source IP Address
+1. Source Port Number 
+1. Destination IP Address
+1. Destination Port Number
+
+The following occurs when a host sends a message to the receiver - 
+
+1. The server initially waits for a clients on port number 1200.
+1. The ```TCP``` client creates a socket and sends a connection-establishment-request.
+1. The connection-establishment-request is a TCP Segment with destination port number 12000 and a special connection-establishment bit set in the ```TCP``` header.
+1. When the host OS of the computer running the server process receives the incoming connection-request segment with the destination port 12000, it locates the server process that is waiting to accept a connection on port number 12000.
+1. Then a socket is created.
+1. The transport layer at the server notes the four-tuple values present in the transport-layer segment.
+1. If the information present in the segment matches with the information of the process, then the data from the segment is passed on to the process through the socket.
+
+:warning: All four fields of the ```TCP``` segment are used direct the segment to the appropriate socket.
+
+:warning: If two ```TCP``` segments with different source ```IP``` address and ```port number``` but with the same destination ```IP``` address and ```port number``` are sent to a host, it will be directed to two different sockets unlike with what happens in ```UDP```.
+
+## Web Servers and TCP
+
+> If the client and server are using persistent HTTP, then throughout the duration of the persistent connection the client and server exchange HTTP messages via the same server socket. 
+
+> However, if the client and server use non-persistent ```HTTP```, then a new ```TCP``` connection is created and closed for every request/response, and hence a new socket is created and later closed for every request/response. 
+
+:warning: This frequent opening and closing of sockets can severely impact the performance of a busy Web server.
+
+## Connectionless Transport: UDP
+
+**```UDP```** is said to be **connectionless** because there is no hand-shaking between sendng and receiving transport-layer entities before sending a segment. 
+
+```UDP``` is a ```vacuous transport protocol```.
+
+```UDP``` does very little to extend the network layer, it only adds multiplexing/demultiplexing and some error checking to ```IP```.
+
+:warning: ```UDP``` is almost directly talking with ```IP```. 
+
+Tht following steps takes place when ```UDP``` is used -
+
+1. It takes messages from the application process and attaches ```source port number``` and ```destination port number``` for multiplexing/demultiplexing service.
+1. It adds two small fields to the segment and passes the resulting segment to the network layer.
+1. The network layer encapsulates the segment into an ```IP datagram``` and makes a best-effort attempt to deliver the segment to the receiving host. 
+1. If the segment arrives at the host, ```UDP``` uses the destination port number to deliver the segment's data to the application process.
+
+## Working of DNS with UDP**
+
+```DNS``` is an application-layer protocol that uses ```UDP```. 
+
+The following steps takes place when ```DNS``` uses ```UDP``` - 
+
+1. When the ```DNS``` application in a host wants to make a query, it constructs a DNS query message and passes the message to the ```UDP```.
+1. The host-side ```UDP``` adds header information to the data sends the segment to the network layer without performing any hadshaking. 
+1. The network layer then encapsulates the data into an ```IP``` datagram and makes it best-effort attempt to send the query to the name server. 
+1. If the query is received by the name server, the segement is given to the transport layer which demultiplexes it and hands the data over to the application process. 
+1. The ```DNS``` application at the querying host then waits for a reply from the name server. If it is unable to get the reply (either due to the query or the reply getting lost), then the ```DNS``` host application will query send the query to anther name server or it informs the invoking application that it can't reply. 
+
+## Preference of UDP over TCP
+
+Below mentioned are the reasons why ```UDP``` is preferred over ```TCP``` - 
+
+1.  **Finer application-level control over what data is sent and when** 
+
+    Under ```UDP``` as soon as the data is being passed from the application process, the ```UDP``` adds a few header files to the segment and then sends the segment to the network layer. 
+
+    ```TCP``` on the other hand has a congestion control mechanism which throttles the transport-layer TCP sender when one or more links between the source and destination port becomes excessively congested. 
+
+    ```TCP``` will also continue to resend a segment until the destination process acknowledges the delivery of the segment regardless of how long reliable delivery takes. 
+
+    Thus, for applications that require data to be transmitted quickly, ```TCP``` will be a bad choice. The application developer can use ```UDP``` and extra features to it, depending upon the requirement. 
+
+1.  **No connection establishment**
+
+    
