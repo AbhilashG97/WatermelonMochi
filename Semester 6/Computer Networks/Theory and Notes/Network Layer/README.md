@@ -200,7 +200,7 @@ Tht following steps takes place when ```UDP``` is used -
 1. The network layer encapsulates the segment into an ```IP datagram``` and makes a best-effort attempt to deliver the segment to the receiving host. 
 1. If the segment arrives at the host, ```UDP``` uses the destination port number to deliver the segment's data to the application process.
 
-## Working of DNS with UDP**
+## Working of DNS with UDP
 
 ```DNS``` is an application-layer protocol that uses ```UDP```. 
 
@@ -228,4 +228,80 @@ Below mentioned are the reasons why ```UDP``` is preferred over ```TCP``` -
 
 1.  **No connection establishment**
 
+    In ```UDP``` there is no preliminary handshaking unlike ```TCP``` which performs a three-way handshaking before sending the data. 
+
+
+    Because of the three-way handshaking, ```TCP``` is slower compared to ```UDP```. Thus, ```DNS``` makes use of ```UDP``` and not ```TCP```. 
+
+    However, ```HTTP``` makes use ```TCP``` and not ```UDP``` because reliability for web pages is crucially important. Since, ```HTTP``` uses ```TCP``` it takes some time to load webpages in the web-browser.
+
+1. **No connection state**
+
+    ```TCP``` maintains connection state in the end systems. This connection state includes receive and send buffers, congestion control parameters, sequence and acknowledgement number parameters etc. 
+
+    ```TCP``` needs to maintain these parameters because it provides reliable service and congestion control.
+
+    ```UDP``` on the other hand does not maintain any such connection pararmeters. 
+
+    Hence an application that supports ```UDP``` can run many more clients when compared to ```TCP```. 
+
+1.  **Small packet header overhead**
+
+    ```TCP``` segment has over 20 bytes of header overhead whereas in case of ```UDP``` the header overhead is only of 8 bytes. 
+
+
+Below mentioned are the cases where ```UDP``` is used - 
+
+1. RIP 
+1. Used to carry network managment data (SNMP)
+1. DNS
+
+:warning: ```UDP``` unlike ```TCP``` has no congestion-control mechanism which if not controlled can lead to a lot of packet overflow at the routers which in turn would result in high loss rates between a ```UDP``` sender and receiver.
+
+:boom: It is possible to achieve reliable data transfer in ```UDP```. But it has to be built into the application itself. 
+
+### UDP Segment Structure
+
+The application data is stored in the data field of the ```UDP``` segment. 
+
+The ```UDP``` header has only 4 fields. The first two fields are for the ````source port number``` and the ```destination port number```. The next two fields are for length and checksum. 
+
+:boom:The length specifies the number of bytes of the ```UDP``` segment(header + data). 
+
+:exclamation: an explicit length value is needed as the data field may vary from one segment to another. 
+
+:warning: The size of the header field in the ```UDP``` segment is fixed and it is of 8 bytes. 
+
+:boom: The checksum is used by the receiving host to check for errors in the segment. 
+
+:exclamation: The checksum is also calculated in the ```IP``` header.
+
+### UDP Checksum
+
+The checksum is used for error detection. It is used to determine if the bits in the segment have been altered or not as it moved from source to destination. 
+
+:warning: Although ```UDP``` provides error-checking, it does no do anything to recover from an error. 
+
+:boom: Some implementations send the data to the application process with a warning, others simply discard the data. 
+
+Below mentioned are the steps that are used in error checking - 
+
+1.  Sum all the 16-bit numbers.
     
+    :warning: If there is an overflow, wrap the extra bit.
+
+1.  Perform ones compliment to the resulting sum. The resulting sum is the checksum that is added to the checksum field in the segment. 
+
+1.  On the receiving side, all the 16-bit values are summed with checksum. If the resulting value is **all ones**, then no errors are present in the segment. 
+
+Below mmentioned are the reasons error checking is being provided by ```UDP``` - 
+
+1. Even when the segments are safely, there is no gaurentee that the bits will be stored in the routers properly. Errors might be introduced to the segment when the segment is stored in the router. 
+
+1. Also, there is no gaurentee that all links provided by the link-layer protocols provide error checking. 
+
+
+:warning: Hence, ```UDP``` must provide end-to-end error checking. 
+
+## Principles of Reliable Data Transfer
+
