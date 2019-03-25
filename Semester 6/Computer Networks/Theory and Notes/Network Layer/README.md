@@ -305,3 +305,23 @@ Below mmentioned are the reasons error checking is being provided by ```UDP``` -
 
 ## Principles of Reliable Data Transfer
 
+The following needs to be provided by a **Reliable Data Transfer Protocol** -
+
+1. No transferred bits are corrupted, i.e no bits in the segment are flipped from 1 to 0 or vice-versa. 
+1. No transferred data is lost.
+1. All the transferred data is delivered in the order in which they are sent.
+
+:warning: It is the task of a **Reliable Data Transfer Protocol** to implement this service abstraction.
+
+:boom: The task of implementing a **Reliable Data Transfer Protocol** is made difficult by the fact that the underlying protocol could be unreliable.
+
+:exclamation: While providing an implementation for the **Reliable Data Transfer Protocol (RDT)** we'll assume that the data will not reordered when it is being transferred, however the data can get lost or get corrupted. 
+
+:warning: Also, only unidirectional data transfer will be considered for now. 
+
+### Building a Reliable Data Tranfer Protocol 
+
+Reliable Data Transfer Protocol is often abbreviated as ```RDT```. Below mentioned are the various ways in which it can be implemented.  
+
+#### RDT over a Perfectly Reliable Channel
+
