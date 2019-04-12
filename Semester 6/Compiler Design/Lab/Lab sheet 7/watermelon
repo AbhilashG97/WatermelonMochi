@@ -1,0 +1,15 @@
+import java_cup.runtime.Symbol;
+import java_cup.runtime.Scanner;
+
+%%
+%cup
+%%
+"+" {System.out.println("LA "+yytext()); return new Symbol(sym.PLUS);}
+"-" {System.out.println("LA "+yytext()); return new Symbol(sym.MINUS);}
+"*" {System.out.println("LA "+yytext()); return new Symbol(sym.TIMES);}
+"/" {System.out.println("LA "+yytext()); return new Symbol(sym.DIVIDE);}
+"%" {System.out.println("LA "+yytext()); return new Symbol(sym.MOD);}
+";" {System.out.println("LA "+yytext()); return new Symbol(sym.SEMI);}
+"(" {System.out.println("LA "+yytext()); return new Symbol(sym.LPAREN);}
+")" {System.out.println("LA "+yytext()); return new Symbol(sym.RPAREN);}
+[0-9]+ {System.out.println("LA "+yytext()); return new Symbol(sym.NUMBER, new Integer(yytext()));}
