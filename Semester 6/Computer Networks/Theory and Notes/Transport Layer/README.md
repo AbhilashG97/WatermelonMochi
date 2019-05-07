@@ -1,4 +1,3 @@
-
 # Network Layer
 
 ## Introduction and Transport Layer Services 
@@ -107,11 +106,11 @@ Both ```UDP``` and ```TCP``` provide integrity checking by including error-detec
 
 :warning: A ```multiplexing/demultiplexing``` system is needed by all computer networks.
 
-At the receiving host, when a message arrives the transport layer receives the segements from the network-layer. The transport layer then has to send the message to the appropriate process present on the appropriate socket.
+At the receiving host, when a message arrives the transport-layer receives the segements from the network-layer. The transport layer then has to send the message to the appropriate process present on the appropriate socket.
 
 :warning: The transport layer however delivers the data to the intermediary socket. The receiving host can have many sockets. Each socket has a unique identifer and the format of the identifier depends upon whether the socket is a ```UDP socket``` or a ```TCP socket```.
 
-When the transport-layer receives the segment, it reads the variuos fields present in the segment and then directs the message to the appropriate socket. 
+When the transport-layer receives the segment, it reads the various fields present in the segment and then directs the message to the appropriate socket. 
 
 :warning: The job of delivering the data in the transport-layer segment to the correct socket is called **demultiplexing**. 
 
@@ -207,7 +206,7 @@ Tht following steps takes place when ```UDP``` is used -
 The following steps takes place when ```DNS``` uses ```UDP``` - 
 
 1. When the ```DNS``` application in a host wants to make a query, it constructs a DNS query message and passes the message to the ```UDP```.
-1. The host-side ```UDP``` adds header information to the data sends the segment to the network layer without performing any hadshaking. 
+1. The host-side ```UDP``` adds header information to the data and then sends the segment to the network-layer without performing any handshaking. 
 1. The network layer then encapsulates the data into an ```IP``` datagram and makes it best-effort attempt to send the query to the name server. 
 1. If the query is received by the name server, the segement is given to the transport layer which demultiplexes it and hands the data over to the application process. 
 1. The ```DNS``` application at the querying host then waits for a reply from the name server. If it is unable to get the reply (either due to the query or the reply getting lost), then the ```DNS``` host application will query send the query to anther name server or it informs the invoking application that it can't reply. 
@@ -319,9 +318,62 @@ The following needs to be provided by a **Reliable Data Transfer Protocol** -
 
 :warning: Also, only unidirectional data transfer will be considered for now. 
 
+:exclamation: **rdt** stands for ```Reliable Data Transfer``` whereas **udt** stands for ```Unreliable Data Transfer```. 
+
+Please look at the figure below to get a better idea. 
+
+![](#)
+
 ### Building a Reliable Data Tranfer Protocol 
 
 Reliable Data Transfer Protocol is often abbreviated as ```RDT```. Below mentioned are the various ways in which it can be implemented.  
 
-#### RDT over a Perfectly Reliable Channel
+#### RDT over a Perfectly Reliable Channel : rdt1.0
+
+The FSM (Finite State Machine) for the both the receiver and the sender are shown in the below figure - 
+
+![](#)
+
+A few things that have to kept in mind while looking at the figure is that - 
+
+1.  The event causing the transition is shown above the horizontal line labeling the transition.
+1.  The action taken when the event occurs is shown below the horizontal line. 
+1.  The dashed line represents the initial state of the FSM. 
+1.  When action is taken or  when no event occurs, ```^``` symbol is used.
+
+##### rdt sending side
+
+Please have a look at the figure above. The data is first sent from the reliable application-layer to the transport layer through ```rdt_send()```. This is done by first packaging the data and then sending it to the network-layer through ```udt_send()```.   
+
+##### rdt receiving side
+
+Again, please have a look at the figure. At the receiving side, ```rdt_rcv(pkt)``` receives the data from the network-layer and then sends it to the transport-layer. At the transport-layer the data from the packet is extracted and is then delivered to the application-layer. 
+
+:warning: Since, in ```rdt 1.0``` we have assumed that we have a perfectly reliable channel, there is no need for the receiver to send feedback to the sender. Also, we are assuming that the receiver is able to receive the data as soon as the sender sends it. 
+
+#### RDT over a Channel with Bit Errors : rdt2.0
+
+This is more realistic model as this cosiders the possibility of corruption of data during data transit. The bit errors are generated because of the physical components of a network as packects are transported. 
+
+:boom: In this model there is no data loss and there is no re-ordering of data that is transported. 
+
+Here a ```message-detection protocol``` is used where both ```positive acknowedgements (OK)``` and ```negative acknowledgements(please repeat again)``` are used. If the receiver in such a protocol receives corrupted data, it asks the sender to send the data again. 
+
+:exclamation: RDT protocols based on such retransmission are known as ```ARQ(Automatic Repeat reQuest)``` protocols.
+
+Fundamentally, ARQ protocols require the following **three additional capabilities** - 
+
+1.  **Error detection**
+
+    A mechanism is required which can detect bit errors at the receiver side. This mechanism hence requires additional bits beyond the original bits to sent by the sender to the reciever.
+
+1.  **Receiver feedback**
+
+    In order for the sender to know whether the receiver received the packet with any bit loss the receiver has to send some sort of a feedback. This feedback can be in the form of ```ACK``` or ```NAK```. The ```ACK``` and ```NAK``` need to be 1 bit long only and can contain the value of either 1 or 0. 
+
+    :warning: 0 -> NAK | 1 -> ACK 
+
+1.  **Retransmission**
+
+    A packet that is received by the receiver if found to be corrupt needs to be retransmitted. 
 
