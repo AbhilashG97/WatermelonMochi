@@ -1,3 +1,4 @@
+
 # Transport Layer
 
 ## Introduction and Transport Layer Services 
@@ -361,7 +362,7 @@ Here a ```message-detection protocol``` is used where both ```positive acknowedg
 
 :exclamation: RDT protocols based on such retransmission are known as ```ARQ(Automatic Repeat reQuest)``` protocols.
 
-Fundamentally, ARQ protocols require the following **three additional capabilities** - 
+Fundamentally, ```ARQ``` protocols require the following **three additional capabilities** - 
 
 1.  **Error detection**
 
@@ -380,8 +381,123 @@ Fundamentally, ARQ protocols require the following **three additional capabiliti
 
 The FSM for the receiver and sender of rdt2.0 can be found below - 
 
+![rdt2.0](#)
+
 ##### rdt2.0 sending side
 
+The sending side contains a ```FSM``` with two states. The first state sends the packet to the receiver and the second state waits for the response (```ACK``` or ```NAK```) from the receiver. 
 
+If the second state receives an ```ACK``` as the response, it simply goes back to the first state as the packet has been sent to the receiver without any data corruption. Hence ```^``` is present below the horizontal line. 
+
+On the other hand if the data that is sent to the reciever gets corrupted in transit, the sender receives a ```NAK```. As a response, it sends the packet again to the receiver.
+
+:boom: When the sender waits for the response from the receiver it connot send any more packet(s) unless it receives a response from the receiver. Hence, this protocol is also termed as **stop and wait protocol** as the sender has to stop and wait for the response from the receiver.
 
 ##### rdt2.0 receiving side 
+
+```FSM``` for the receiver only has one state. 
+
+When the receiver receives a data packet and the packet is not corrupt (i.e ```rdt_rcv(packet) && is_corrupt()``` is true), the receiver creats a packet with ```ACK``` and sends it to the sender. 
+
+On the other hand when the receiver receives a data packet that is corrupt, it creates a packet with a ```NAK``` and sends it to the sender. 
+
+:boom: The above mechanism however has a serious flaw. If the ```ACK``` or the ```NAK``` that is being sent to the sender gets corrupt, the sender won't be able to know. This flaw has been addressed in ```rdt2.1``` which is explained in the next section.
+
+#### RDT over a Channel with Bit Errors : rdt2.1
+
+```rdt2.1``` addresses the shortcomings of ```rdt2.0```. In ```rdt2.1``` each data packet that is being sent to the receiver has a ```modulo-2``` **sequence number** associated with it. Whenever the sender receives a garbled ```ACK``` or ```NAK``` it sends the data packet again. 
+
+Once the sender receives the data packet, it checks the ```sequence number``` of the previously received data packet, if it's the same then it has received the re-transmitted packet and if the sequence number doesn't match with previuos data packet then it has received a new data-packet. 
+
+This way the sender and the receiver are able to get the proper data packet without any corruption. 
+
+:boom: modulo-2 means binary numbers (i.e ```1``` or ```0```)
+
+##### rdt2.1 sender
+
+The FSM for ```rdt2.1``` can be found below - 
+
+![rdt2.1](#)
+
+The ```FSM``` for the sender here has 4 states. The first two states send the data packet with ```sequence number 0``` and the last two states send the data packet with ```sequence number 1```. 
+
+The first state sends the data packet. The second state checks if the received packet is corrupt or if it is a ```NAK```. If either of them is true, it sends the data packet again. On the other hand if the data packet received is not corrupt and ```ACK``` is also received, the FSM goes to the next state where it sends the data packet with the ```sequence number 1```. 
+
+Again, the third state checks whether the data packet received is corrupt or if ```NAK``` is received.
+
+##### rdt2.1 receiver
+
+The ```FSM``` for rtd2.1 can be found below - 
+
+![rdt2.1](#)
+
+The ```FSM``` for ```rdt2.1``` has two states. 
+
+In the ```first state``` if the receiver at state 0 receives the data packet with the sequence number of 0 it moves to the next state. On the other hand if it receives either corrupt data or data with the previous sequence number, it sends the ```NAK``` and ```ACK``` resppectively back to the sender.
+
+The next state does the name thing but with the sequence number of 1. The receiver in this state waits for the data packet of sequence number 1. If the data packet is not corrupt or if the data packet received is not a duplicate of the previous data packet, the FSM goes to the next state else it stays in the current state. 
+
+#### RDT over a Channel with Bit Errors : rdt2.2
+
+The ```rdt2.2``` protocol is a bit different form the ```rdt2.1``` protocol in terms of how the receiver sends response back to the sender. In ```rdt2.2``` the receiver only uses ```ACK``` as a response. If the receiver gets a corrupted data packet, it sends the ```ACK``` of the previously received data packet to the sender. 
+
+Now, if the sender receives an ```ACK``` of the previously recieved data packet it has to retransmit the data. 
+
+:boom: Here the ```ACK``` of the last correctly received packet is sent as substitute for ```NAK```. In other words **duplicate ACKs** are sent.
+
+##### rdt2.2 sender
+
+The ```FSM``` for ```rdt2.2``` can be found below - 
+
+![rtd2.2](#)
+
+The ```FSM``` for ```rdt2.2``` also has 4 states. The only difference here is that now instead of checking for a ```NAK``` at the 2nd and 4th state it'll be checking if the ACK received is new or not. If it's old then the sender will have to send the data packet again. 
+
+##### rdt2.2 receiver 
+
+The FSM for rdt2.2 can be found below - 
+
+![rdt2.2](#)
+
+The ```rdt2.2``` receiver is a bit similar to the ```rdt2.1``` receiver, the only difference being that instead of sending a ```NAK``` when the data packet received is corrupt or out-of-sync, the ```rdt2.2``` receiver sends a ```ACK``` of the previously received data packet.
+
+#### Reliable Data Transfer over a Lossy Channel with Bit Errors: rdt3.0
+
+```rdt3.0``` is applicable to real-time scenarios where there is both loss and corruption of data.
+
+The loss of data can occur in the following ways -
+
+1.  The data packet is lost in transit and it never reaches the receiver.
+
+1.  The respose from the receiver is lost and it never reached the sender. 
+
+1.  The sender sends the data packet but it takes a lot to send the packet. 
+
+If the first two cases occur, the sender will have get notification about it. In order to fix such an issue the concept of timers can be used. A timer can be set-up which will retransmit the data after a timeout occurs in the timer.
+
+Since the data packets will be retransmitted again ```duplicate data packets``` will be sent to reciver but ```rdt2.2``` already has a solution for that issue. 
+
+Then burden of the data packet loss problem will be entirely taken up by the sender. The sender will thus have to perform the following - 
+
+1.  Start the timer each time a packet is sent
+1.  Respond to a timer interrupt
+1.  Stop the timer
+
+:warning: ```rtd3.0``` is also at times referred to as the **alternating bit-protocol**. 
+
+##### rdt3.0 sender
+
+The ```FSM``` for ```rdt3.0``` can be found below - 
+
+![rdt3.0](#)
+
+This ```FSM``` is like the ```rdt2.2``` which has 4 states. The only difference here being that the whenever the sender sends the data the timer has to started. And whenever the sender receives a corrupt or a delayed response, the ```FSM``` will retransmit the data. 
+
+:warning: All of the ```rdt``` models mentioned above are built on top of the inherit ```stop and wait protocol```. 
+
+### Piplined Reliable Data Transfer Protocols
+
+The figure below shows the contrast between a stop-and-wait protocol and a pipelined protocol. 
+
+![pipelined-protocol](#)
+
