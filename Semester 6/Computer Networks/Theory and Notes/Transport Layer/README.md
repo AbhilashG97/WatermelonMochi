@@ -371,9 +371,17 @@ Fundamentally, ARQ protocols require the following **three additional capabiliti
 
     In order for the sender to know whether the receiver received the packet with any bit loss the receiver has to send some sort of a feedback. This feedback can be in the form of ```ACK``` or ```NAK```. The ```ACK``` and ```NAK``` need to be 1 bit long only and can contain the value of either 1 or 0. 
 
-    :warning: 0 -> NAK | 1 -> ACK 
+    :warning: ```0 refers to NAK``` and  ```1 refers to ACK``` 
 
 1.  **Retransmission**
 
     A packet that is received by the receiver if found to be corrupt needs to be retransmitted. 
 
+
+The FSM for the receiver and sender of rdt2.0 can be found below - 
+
+##### rdt2.0 sending side
+
+
+
+##### rdt2.0 receiving side 
