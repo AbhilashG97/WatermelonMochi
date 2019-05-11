@@ -1,0 +1,5 @@
+--cpu ARM7TDMI
+".\banana.o"
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x00000000 --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\lbsp2.map" -o .\lbsp2.axf

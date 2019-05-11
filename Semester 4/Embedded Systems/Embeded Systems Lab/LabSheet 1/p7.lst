@@ -1,0 +1,60 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             PROG2, CODE, READONLY
+    2 00000000         ENTRY
+    3 00000000 E3A04000        MOV              R4, #0
+    4 00000004 E3A0500A        MOV              R5, #10
+    5 00000008 E0844005 
+                       AGAIN   ADD              R4, R4, R5
+    6 0000000C E2555001        SUBS             R5, R5, #1
+    7 00000010 1AFFFFFC        BNE              AGAIN
+    8 00000014 EAFFFFFE 
+                       HALT    B                HALT
+                       
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\p7.d -o.\p7.o -IE
+:\Keil\ARM\RV31\INC -IE:\Keil\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --l
+ist=.\p7.lst p7.ASM
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+AGAIN 00000008
+
+Symbol: AGAIN
+   Definitions
+      At line 5 in file p7.ASM
+   Uses
+      At line 7 in file p7.ASM
+Comment: AGAIN used once
+ENTRY 00000000
+
+Symbol: ENTRY
+   Definitions
+      At line 2 in file p7.ASM
+   Uses
+      None
+Comment: ENTRY unused
+HALT 00000014
+
+Symbol: HALT
+   Definitions
+      At line 8 in file p7.ASM
+   Uses
+      At line 8 in file p7.ASM
+Comment: HALT used once
+PROG2 00000000
+
+Symbol: PROG2
+   Definitions
+      At line 1 in file p7.ASM
+   Uses
+      None
+Comment: PROG2 unused
+4 symbols
+335 symbols in table

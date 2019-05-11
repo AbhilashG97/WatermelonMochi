@@ -1,0 +1,2 @@
+Dependencies for Project 'yumyum', Target 'Target 1': (DO NOT MODIFY !)
+F (.\house.asm)(0x5A9E2D1F)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I E:\Keil\ARM\RV31\INC-I E:\Keil\ARM\CMSIS\Include--list .\house.lst --xref -o .\house.o --depend .\house.d)

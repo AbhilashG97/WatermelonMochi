@@ -1,0 +1,95 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; CODE FOR LARGEST OF N NUMBERS
+    2 00000000                 AREA             HOUSE, CODE, READWRITE
+    3 00000000         ENTRY
+    4 00000000 E59F0048        LDR              R0, =DATA
+    5 00000004 E3A03050        LDR              R3, =0x00000050
+    6 00000008 E3A04005        LDR              R4, =0x05
+    7 0000000C E4901004        LDR              R1, [R0], #4
+    8 00000010 E2444001        SUB              R4, R4, #1
+    9 00000014 E5902000 
+                       BACK    LDR              R2, [R0]
+   10 00000018 E1510002        CMP              R1, R2
+   11 0000001C 9A000000        BLS              LESS
+   12 00000020 E1A01002        MOV              R1, R2
+   13 00000024 E2800004 
+                       LESS    ADD              R0, R0, #4
+   14 00000028 E2444001        SUB              R4, R4, #1
+   15 0000002C E3540000        CMP              R4, #0
+   16 00000030 1AFFFFF7        BNE              BACK
+   17 00000034 E5851000        STR              R1, [R5]
+   18 00000038 EAFFFFFE 
+                       STOP    B                STOP
+   19 0000003C         
+   20 0000003C 00000064 
+              00000005 
+              00000096 
+              00000010 
+              00000015 DATA    DCD              &64, &05, &96, &10, &15
+   21 00000050         
+   22 00000050                 END
+              00000000 
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\house.d -o.\house
+.o -IE:\Keil\ARM\RV31\INC -IE:\Keil\ARM\CMSIS\Include --predefine="__EVAL SETA 
+1" --list=.\house.lst house.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+BACK 00000014
+
+Symbol: BACK
+   Definitions
+      At line 9 in file house.asm
+   Uses
+      At line 16 in file house.asm
+Comment: BACK used once
+DATA 0000003C
+
+Symbol: DATA
+   Definitions
+      At line 20 in file house.asm
+   Uses
+      At line 4 in file house.asm
+Comment: DATA used once
+ENTRY 00000000
+
+Symbol: ENTRY
+   Definitions
+      At line 3 in file house.asm
+   Uses
+      None
+Comment: ENTRY unused
+HOUSE 00000000
+
+Symbol: HOUSE
+   Definitions
+      At line 2 in file house.asm
+   Uses
+      None
+Comment: HOUSE unused
+LESS 00000024
+
+Symbol: LESS
+   Definitions
+      At line 13 in file house.asm
+   Uses
+      At line 11 in file house.asm
+Comment: LESS used once
+STOP 00000038
+
+Symbol: STOP
+   Definitions
+      At line 18 in file house.asm
+   Uses
+      At line 18 in file house.asm
+Comment: STOP used once
+6 symbols
+339 symbols in table

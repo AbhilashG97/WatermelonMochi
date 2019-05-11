@@ -1,0 +1,2 @@
+Dependencies for Project 'labsheet2', Target 'Target 1': (DO NOT MODIFY !)
+F (.\LBSP1.asm)(0x5A9E01FC)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I E:\Keil\ARM\RV31\INC-I E:\Keil\ARM\CMSIS\Include--list .\lbsp1.lst --xref -o .\lbsp1.o --depend .\lbsp1.d)

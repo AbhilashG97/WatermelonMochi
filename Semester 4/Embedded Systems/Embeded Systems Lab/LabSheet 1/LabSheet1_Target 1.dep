@@ -1,0 +1,4 @@
+Dependencies for Project 'LabSheet1', Target 'Target 1': (DO NOT MODIFY !)
+F (.\P1.asm)(0x5A9D65C8)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I E:\Keil\ARM\RV31\INC-I E:\Keil\ARM\CMSIS\Include--list .\p1.lst --xref -o .\p1.o --depend .\p1.d)
+F (.\P3.asm)(0x5A9D7463)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I E:\Keil\ARM\RV31\INC-I E:\Keil\ARM\CMSIS\Include--list .\p3.lst --xref -o .\p3.o --depend .\p3.d)
+F (.\P2.asm)(0x5A9D677D)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I E:\Keil\ARM\RV31\INC-I E:\Keil\ARM\CMSIS\Include--list .\p2.lst --xref -o .\p2.o --depend .\p2.d)

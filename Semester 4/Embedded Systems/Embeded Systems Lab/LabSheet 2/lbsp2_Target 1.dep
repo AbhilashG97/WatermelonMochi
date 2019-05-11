@@ -1,0 +1,2 @@
+Dependencies for Project 'lbsp2', Target 'Target 1': (DO NOT MODIFY !)
+F (.\banana.asm)(0x5A9E21BF)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I E:\Keil\ARM\RV31\INC-I E:\Keil\ARM\CMSIS\Include--list .\banana.lst --xref -o .\banana.o --depend .\banana.d)

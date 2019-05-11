@@ -1,0 +1,74 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             banana, CODE, READWRITE
+    2 00000000         ENTRY
+    3 00000000 E59F0018        LDR              R0, =value1
+    4 00000004 E5901000        LDR              R1, [R0]
+    5 00000008 E59F0014        LDR              R0, =value2
+    6 0000000C E5902000        LDR              R2, [R0]
+    7 00000010 E0823001        ADD              R3, R2, R1
+    8 00000014         
+    9 00000014 BBBBBBBB 
+                       value1  DCD              &BBBBBBBB
+   10 00000018 CCCCCCCC 
+                       value2  DCD              &CCCCCCCC
+   11 0000001C EAFFFFFE 
+                       LOOP    B                LOOP
+   12 00000020                 END
+              00000000 
+              00000000 
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\banana.d -o.\bana
+na.o -IE:\Keil\ARM\RV31\INC -IE:\Keil\ARM\CMSIS\Include --predefine="__EVAL SET
+A 1" --list=.\banana.lst banana.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ENTRY 00000000
+
+Symbol: ENTRY
+   Definitions
+      At line 2 in file banana.asm
+   Uses
+      None
+Comment: ENTRY unused
+LOOP 0000001C
+
+Symbol: LOOP
+   Definitions
+      At line 11 in file banana.asm
+   Uses
+      At line 11 in file banana.asm
+Comment: LOOP used once
+banana 00000000
+
+Symbol: banana
+   Definitions
+      At line 1 in file banana.asm
+   Uses
+      None
+Comment: banana unused
+value1 00000014
+
+Symbol: value1
+   Definitions
+      At line 9 in file banana.asm
+   Uses
+      At line 3 in file banana.asm
+Comment: value1 used once
+value2 00000018
+
+Symbol: value2
+   Definitions
+      At line 10 in file banana.asm
+   Uses
+      At line 5 in file banana.asm
+Comment: value2 used once
+5 symbols
+338 symbols in table

@@ -1,0 +1,88 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             PROG1, CODE, READONLY
+    2 00000000         ENTRY
+    3 00000000 E3A01006        MOV              R1, #Q
+    4 00000004 E3A02002        MOV              R2, #R
+    5 00000008 E3A03005        MOV              R3, #S
+    6 0000000C E0810002        ADD              R0, R1, R2
+    7 00000010 E0800003        ADD              R0, R3
+    8 00000014 EAFFFFFE 
+                       HALT    B                HALT
+    9 00000018 00000006 
+                       Q       EQU              6
+   10 00000018 00000002 
+                       R       EQU              2
+   11 00000018 00000005 
+                       S       EQU              5
+   12 00000018                 END
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\q1.d -o.\q1.o -IE
+:\Keil\ARM\RV31\INC -IE:\Keil\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --l
+ist=.\q1.lst Q1.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ENTRY 00000000
+
+Symbol: ENTRY
+   Definitions
+      At line 2 in file Q1.asm
+   Uses
+      None
+Comment: ENTRY unused
+HALT 00000014
+
+Symbol: HALT
+   Definitions
+      At line 8 in file Q1.asm
+   Uses
+      At line 8 in file Q1.asm
+Comment: HALT used once
+PROG1 00000000
+
+Symbol: PROG1
+   Definitions
+      At line 1 in file Q1.asm
+   Uses
+      None
+Comment: PROG1 unused
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+Q 00000006
+
+Symbol: Q
+   Definitions
+      At line 9 in file Q1.asm
+   Uses
+      At line 3 in file Q1.asm
+Comment: Q used once
+R 00000002
+
+Symbol: R
+   Definitions
+      At line 10 in file Q1.asm
+   Uses
+      At line 4 in file Q1.asm
+Comment: R used once
+S 00000005
+
+Symbol: S
+   Definitions
+      At line 11 in file Q1.asm
+   Uses
+      At line 5 in file Q1.asm
+Comment: S used once
+3 symbols
+337 symbols in table

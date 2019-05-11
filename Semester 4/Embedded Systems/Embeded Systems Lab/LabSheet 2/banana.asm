@@ -1,0 +1,12 @@
+		AREA banana, CODE, READWRITE
+ENTRY
+		LDR R0, =value1
+		LDR R1, [R0]
+		LDR R0, =value2
+		LDR R2, [R0]
+		ADD R3, R2, R1
+		
+value1	DCD &BBBBBBBB
+value2	DCD	&CCCCCCCC
+LOOP	B LOOP
+		END

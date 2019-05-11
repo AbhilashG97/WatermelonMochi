@@ -1,0 +1,47 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; SECOND ASSEMBLY PROGRAM
+    2 00000000                 AREA             PROG2, CODE, READONLY
+    3 00000000         ENTRY
+    4 00000000 E3A01010        MOV              R1, #16     ; R1 := 0x10
+    5 00000004 E3A0202A        MOV              R2, #42     ; R2 := 0x2A
+    6 00000008 E3A0303B        MOV              R3, #59     ; R3 := 0x3B
+    7 0000000C E3A0404C        MOV              R4, #76     ; R4 := 0x4C
+    8 00000010 E3A0505D        MOV              R5, #93     ; R5 := 0x5D
+    9 00000014 E0810002        ADD              R0, R1, R2  ; R0 := R1 + R2
+   10 00000018 E0800003        ADD              R0, R0, R3  ; R0 := R0 + R3
+   11 0000001C E0800004        ADD              R0, R0, R4  ; RO := R0 + R4
+   12 00000020 E0800005        ADD              R0, R0, R5  ; R0 := R0 + R5
+   13 00000024         
+   14 00000024                 END
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\p2.d -o.\p2.o -IE
+:\Keil\ARM\RV31\INC -IE:\Keil\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --l
+ist=.\p2.lst P2.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ENTRY 00000000
+
+Symbol: ENTRY
+   Definitions
+      At line 3 in file P2.asm
+   Uses
+      None
+Comment: ENTRY unused
+PROG2 00000000
+
+Symbol: PROG2
+   Definitions
+      At line 2 in file P2.asm
+   Uses
+      None
+Comment: PROG2 unused
+2 symbols
+333 symbols in table

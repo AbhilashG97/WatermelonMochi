@@ -1,0 +1,94 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             apple, CODE, READWRITE
+    2 00000000         ENTRY
+    3 00000000 E59F1018        LDR              R1, Q
+    4 00000004 E59F2018        LDR              R2, R
+    5 00000008 E59F3018        LDR              R3, S
+    6 0000000C E0810002        ADD              R0, R1, R2
+    7 00000010 E0800003        ADD              R0, R3
+    8 00000014 E58F0004        STR              R0, Q
+    9 00000018 EAFFFFFE 
+                       STOP    B                STOP
+   10 0000001C                 AREA             apple, CODE, READWRITE
+   11 0000001C 00 00 00 
+              00       P       SPACE            4
+   12 00000020 000009A4 
+                       Q       DCD              2468
+   13 00000024 00000002 
+                       R       DCD              2
+   14 00000028 00000005 
+                       S       DCD              5
+   15 0000002C                 END
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\lbsp1.d -o.\lbsp1
+.o -IE:\Keil\ARM\RV31\INC -IE:\Keil\ARM\CMSIS\Include --predefine="__EVAL SETA 
+1" --list=.\lbsp1.lst LBSP1.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ENTRY 00000000
+
+Symbol: ENTRY
+   Definitions
+      At line 2 in file LBSP1.asm
+   Uses
+      None
+Comment: ENTRY unused
+P 0000001C
+
+Symbol: P
+   Definitions
+      At line 11 in file LBSP1.asm
+   Uses
+      None
+Comment: P unused
+Q 00000020
+
+Symbol: Q
+   Definitions
+      At line 12 in file LBSP1.asm
+   Uses
+      At line 3 in file LBSP1.asm
+      At line 8 in file LBSP1.asm
+
+R 00000024
+
+Symbol: R
+   Definitions
+      At line 13 in file LBSP1.asm
+   Uses
+      At line 4 in file LBSP1.asm
+Comment: R used once
+S 00000028
+
+Symbol: S
+   Definitions
+      At line 14 in file LBSP1.asm
+   Uses
+      At line 5 in file LBSP1.asm
+Comment: S used once
+STOP 00000018
+
+Symbol: STOP
+   Definitions
+      At line 9 in file LBSP1.asm
+   Uses
+      At line 9 in file LBSP1.asm
+Comment: STOP used once
+apple 00000000
+
+Symbol: apple
+   Definitions
+      At line 1 in file LBSP1.asm
+   Uses
+      None
+Comment: apple unused
+7 symbols
+338 symbols in table

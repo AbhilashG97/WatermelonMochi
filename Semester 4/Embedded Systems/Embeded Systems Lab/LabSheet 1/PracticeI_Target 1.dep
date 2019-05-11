@@ -1,0 +1,3 @@
+Dependencies for Project 'PracticeI', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Q1.asm)(0x5A9DFCA3)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I E:\Keil\ARM\RV31\INC-I E:\Keil\ARM\CMSIS\Include--list .\q1.lst --xref -o .\q1.o --depend .\q1.d)
+F (.\p7.ASM)(0x5A9DFCAF)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I E:\Keil\ARM\RV31\INC-I E:\Keil\ARM\CMSIS\Include--list .\p7.lst --xref -o .\p7.o --depend .\p7.d)
