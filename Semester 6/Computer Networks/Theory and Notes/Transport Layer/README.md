@@ -144,7 +144,9 @@ On the host side, the data from the port 1025 is taken by the transport layer an
 
 On the receiving side, if the data reaches from host B, the transport layer examines the segment and delivers the data to correct socket depending upon the value present in the destination port. 
 
-:boom: Note that with UDP there is no handshaking between sending and receiving transport-layer entities before sending a segment. For this reason, UDP is said to be connectionless.
+:warning: It is important to note that a ```UDP socket``` is fully identified by a two-tuple consisting of a destination IP address and a destination port number.
+
+:boom: With UDP there is no handshaking between sending and receiving transport-layer entities before sending a segment. For this reason, UDP is said to be connectionless.
 
 :warning: The server uses the ```source port number``` to send an acknowledgment message back to the client. Hence, the source port number is also specified in the header of the transport-layer segment.
 
