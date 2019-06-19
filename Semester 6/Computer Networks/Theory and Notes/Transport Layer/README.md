@@ -17,7 +17,7 @@ The transport layer converts the message it receives from the application layer 
 
 The message is then sent to the network layer. The message then travels to the target computer through the network layer. When the message is passed to the network layer, the transport-layer segement is encapsulated with the network layer packet - **datagram**. 
 
-:warning: The routers can access information of the network-layer segement. The cannot access the transport-layer information encapsualated in the network-layer segment. 
+:warning: The routers can access information of the network-layer segement. They cannot access the transport-layer information encapsualated in the network-layer segment. 
 
 When the information reaches the other end, the network-layer extracts the transport-layer segment from the datagram and passes the information to the transport layer which then processes the information. The transport layer then passes the information to the application process present in the application layer.
 
