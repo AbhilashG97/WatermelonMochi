@@ -262,9 +262,13 @@ Below mentioned are the cases where ```UDP``` is used -
 
 ### UDP Segment Structure
 
+The ```UDP``` segment looks like this - 
+
+<p align="center"><img src ="images/UDP-Segment.png"/></p>
+
 The application data is stored in the data field of the ```UDP``` segment. 
 
-The ```UDP``` header has only 4 fields. The first two fields are for the ````source port number``` and the ```destination port number```. The next two fields are for length and checksum. 
+The ```UDP``` header has only 4 fields. The first two fields are for the ```source port number``` and the ```destination port number```. The next two fields are for length and checksum. 
 
 :boom:The length specifies the number of bytes of the ```UDP``` segment(header + data). 
 
@@ -323,7 +327,7 @@ The following needs to be provided by a **Reliable Data Transfer Protocol** -
 
 Please look at the figure below to get a better idea. 
 
-![](#)
+<p align="center"><img src ="images/RDT_0.png"/></p>
 
 ### Building a Reliable Data Tranfer Protocol 
 
@@ -333,7 +337,8 @@ Reliable Data Transfer Protocol is often abbreviated as ```RDT```. Below mention
 
 The FSM (Finite State Machine) for the both the receiver and the sender are shown in the below figure - 
 
-![](#)
+<p align="center"><img src ="images/rdt-1.0.png"/></p>
+
 
 A few things that have to kept in mind while looking at the figure is that - 
 
@@ -381,7 +386,7 @@ Fundamentally, ```ARQ``` protocols require the following **three additional capa
 
 The FSM for the receiver and sender of rdt2.0 can be found below - 
 
-![rdt2.0](#)
+<p align="center"><img src ="images/rdt2.0.png"/></p>
 
 ##### rdt2.0 sending side
 
@@ -417,7 +422,7 @@ This way the sender and the receiver are able to get the proper data packet with
 
 The FSM for ```rdt2.1``` can be found below - 
 
-![rdt2.1](#)
+<p align="center"><img src ="images/rdt2.1 sender.png"/></p>
 
 The ```FSM``` for the sender here has 4 states. The first two states send the data packet with ```sequence number 0``` and the last two states send the data packet with ```sequence number 1```. 
 
@@ -429,7 +434,7 @@ Again, the third state checks whether the data packet received is corrupt or if 
 
 The ```FSM``` for rtd2.1 can be found below - 
 
-![rdt2.1](#)
+<p align="center"><img src ="images/rdt-2.1 receiver.png"/></p>
 
 The ```FSM``` for ```rdt2.1``` has two states. 
 
@@ -449,7 +454,7 @@ Now, if the sender receives an ```ACK``` of the previously recieved data packet 
 
 The ```FSM``` for ```rdt2.2``` can be found below - 
 
-![rtd2.2](#)
+<p align="center"><img src ="images/rdt2.2 sender.png"/></p>
 
 The ```FSM``` for ```rdt2.2``` also has 4 states. The only difference here is that now instead of checking for a ```NAK``` at the 2nd and 4th state it'll be checking if the ACK received is new or not. If it's old then the sender will have to send the data packet again. 
 
@@ -457,7 +462,7 @@ The ```FSM``` for ```rdt2.2``` also has 4 states. The only difference here is th
 
 The FSM for rdt2.2 can be found below - 
 
-![rdt2.2](#)
+<p align="center"><img src ="images/rdt2.2 receiver.png"/></p>
 
 The ```rdt2.2``` receiver is a bit similar to the ```rdt2.1``` receiver, the only difference being that instead of sending a ```NAK``` when the data packet received is corrupt or out-of-sync, the ```rdt2.2``` receiver sends a ```ACK``` of the previously received data packet.
 
@@ -489,7 +494,7 @@ Then burden of the data packet loss problem will be entirely taken up by the sen
 
 The ```FSM``` for ```rdt3.0``` can be found below - 
 
-![rdt3.0](#)
+<p align="center"><img src ="images/rdt3.0 sender.png"/></p>
 
 This ```FSM``` is like the ```rdt2.2``` which has 4 states. The only difference here being that the whenever the sender sends the data the timer has to started. And whenever the sender receives a corrupt or a delayed response, the ```FSM``` will retransmit the data. 
 
@@ -499,5 +504,5 @@ This ```FSM``` is like the ```rdt2.2``` which has 4 states. The only difference 
 
 The figure below shows the contrast between a stop-and-wait protocol and a pipelined protocol. 
 
-![pipelined-protocol](#)
+<p align="center"><img src ="images/stop-and-wait VS piplined protocols.png"/></p>
 
