@@ -138,13 +138,13 @@ The segment's data then passes through the socket into the attached process. Thi
 
 Typically, the client side of the application lets the transport layer automatically assign the port number, whereas the server side of the application assigns a specific port number.
 
-To understand multiplexing and demultiplexing in a ```UDP``` network, let us consider two hosts A and B which have the 1025 and 1045 as their port number respectively. 
+To understand multiplexing and demultiplexing in a ```UDP``` network, let us consider two hosts A and B which have 1025 and 1045 as their port numbers respectively. 
 
 On the host side, the data from the port 1025 is taken by the transport layer and converted into a segment with approporiate information filled in the header. The segment is then taken up by the network layer which encapsulates the segment inside the network-layer datagram and makes a best-effort attempt to deliver the information to the host A. 
 
-On the receiving side, if the data reaches host B, the transport layer examines the segment and delivers the data to correct socket depending upon the value present in the destination port. 
+On the receiving side, if the data reaches from host B, the transport layer examines the segment and delivers the data to correct socket depending upon the value present in the destination port. 
 
-:warning: Please note that a ```UDP``` socket is fully identified by both the **IP address** and the **port number**.
+:boom: Note that with UDP there is no handshaking between sending and receiving transport-layer entities before sending a segment. For this reason, UDP is said to be connectionless.
 
 :warning: The server uses the ```source port number``` to send an acknowledgment message back to the client. Hence, the source port number is also specified in the header of the transport-layer segment.
 
