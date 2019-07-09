@@ -17,7 +17,7 @@ Gender :  radio button  Male female
 Food Habbits :radio button veg nonveg
 based on the selection the next dropdown list be food with veg or nonveg
 Food : Dropdown  list  of  veg food/nonveg food
-?? Remarks :  Text with  5  rows 30 columns
+Remarks :  Text with  5  rows 30 columns
 
 submit  button  and  reset  button.
 
@@ -37,7 +37,7 @@ reset should rest everything onclicking submit the the input given by user shoul
 
 � Submit the customer information in button click.
 
-?? 4. Make an HTML and CSS code to design a web page.
+4. Make an HTML and CSS code to design a web page.
 
 � Divide the browser screen into two frames.
 

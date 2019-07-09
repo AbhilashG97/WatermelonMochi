@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html style="overflow-y: scroll">
 
 <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <h1>Enter the Form</h1>
 </head>
 
@@ -9,33 +10,46 @@
     <p>Enter the following details</p>
     <div>
         <input type="text" placeholder="First Name" id="firstNameField">
+        <span id="firstNameTick" style="display: none">&#x2705</span>
+        <span id="firstNameCross" style="display: none">&#x274C</span>
         <br>
         <input type="text" placeholder="Last Name" id="lastNameField">
+        <span id="lastNameTick" style="display: none">&#x2705</span>
+        <span id="lastNameCross" style="display: none">&#x274C</span>
         <hr>
     </div>
 
     <div>
         <p>Please select your gender:</p>
-        <input type="radio" name="gender" value="male"> Male<br>
-        <input type="radio" name="gender" value="female"> Female<br>
-        <input type="radio" name="gender" value="other"> Other<br>
+        <input type="radio" name="gender" value="male">Male<br>
+        <input type="radio" name="gender" value="female">Female<br>
+        <input type="radio" name="gender" value="other">Other<br>
         <hr>
     </div>
 
     <div>
         <p>Please select your food preference:</p>
-        <input type="radio" name="gender" value="Vegetarian">Vegetarian<br>
-        <input type="radio" name="gender" value="Non - Vegetarian">Non - Vegetarian<br><br>
+        <input type="radio" name="foodPreference" value="vegetarian">Vegetarian<br>
+        <input type="radio" name="foodPreference" value="nonvegetarian">Non-Vegetarian<br><br>
     </div>
 
     <div>
-        <select name="foodItems">
-            <option value="Food Item" selected="selected    ">Food Items</option>
+        
+        <select id="foodItem">
+            <option value="Food Item">Food Items</option>
         </select>
+
+        <br><br>
+        <textarea rows="5" columns="30" id="remarksTextArea" placeholder="Remarks"></textarea>
         <br><br>
         <input type="submit" style="margin-right: 4pt" onclick="onSubmitButtonClicked()">
         <button onclick="onResetButtonClicked()" style="color: #ff1a1a"><b>Reset</b></button>
         <hr>
+    </div>
+
+    <div>
+        <h3>Result</h3>
+        <p id="result">Form summary will be displayed here after clicking the submit button</p>
     </div>
 
     <script src="index.js"></script>
