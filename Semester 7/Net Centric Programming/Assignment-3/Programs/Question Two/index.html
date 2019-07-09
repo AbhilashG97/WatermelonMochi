@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <h1>Enter the Form</h1>
+</head>
+
+<body>
+    <p>Enter the following details</p>
+    <div>
+        <input type="text" placeholder="First Name" id="firstNameField">
+        <br>
+        <input type="text" placeholder="Last Name" id="lastNameField">
+        <hr>
+    </div>
+
+    <div>
+        <p>Please select your gender:</p>
+        <input type="radio" name="gender" value="male"> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        <input type="radio" name="gender" value="other"> Other<br>
+        <hr>
+    </div>
+
+    <div>
+        <p>Please select your food preference:</p>
+        <input type="radio" name="gender" value="Vegetarian">Vegetarian<br>
+        <input type="radio" name="gender" value="Non - Vegetarian">Non - Vegetarian<br><br>
+    </div>
+
+    <div>
+        <select name="foodItems">
+            <option value="Food Item" selected="selected    ">Food Items</option>
+        </select>
+        <br><br>
+        <input type="submit" style="margin-right: 4pt" onclick="onSubmitButtonClicked()">
+        <button onclick="onResetButtonClicked()" style="color: #ff1a1a"><b>Reset</b></button>
+        <hr>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

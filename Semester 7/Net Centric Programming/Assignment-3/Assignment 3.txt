@@ -9,20 +9,19 @@ special character and  a numberand length shouldbe  minimum 6 and  maximum 12.
 
 
 
-2. Enter  the form
+2. Enter the form
+
 First Name :  starts  with  alphabet
 Last  Name :  should not have  special characters
 Gender :  radio button  Male female
-Food Habbits :radio button veg  nonveg
-based  on the selection the next  dropdown  list be food with  veg  or   nonveg
+Food Habbits :radio button veg nonveg
+based on the selection the next dropdown list be food with veg or nonveg
 Food : Dropdown  list  of  veg food/nonveg food
-Remarks :  Text with  5  rows 30 columns
-
+?? Remarks :  Text with  5  rows 30 columns
 
 submit  button  and  reset  button.
 
-reset should rest everything
-onclicking  submit the the  input  given  by  user  should  be  printed.
+reset should rest everything onclicking submit the the input given by user should be printed.
 
 3. Write an HTML program to design online taxi booking form with no styles
 
@@ -38,7 +37,7 @@ onclicking  submit the the  input  given  by  user  should  be  printed.
 
 � Submit the customer information in button click.
 
-4. Make an HTML and CSS code to design a web page.
+?? 4. Make an HTML and CSS code to design a web page.
 
 � Divide the browser screen into two frames.
 
