@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html style="overflow-y: scroll">
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <h1>Online Taxi Booking System</h1>
+</head>
+
+<body>
+    <form>
+        <input type="text" id="userNameField" placeholder="Username"><br><br>
+        <input type="tel" id="phoneNumberField" placeholder="Phone Number"><br><br>
+        <input type="email" id="emailField" placeholder="E-mail"><br><br>
+        <hr>
+    </form>
+
+    <div>
+    <h3>Type of Taxi</h3>
+    <input type="radio" name="taxiType" value="Car">Car</input><br>
+    <input type="radio" name="taxiType" value="Taxi">Taxi</input><br>
+    <input type="radio" name="taxiType" value="Tuk Tuk">Tuk Tuk</input><br>
+    <hr>
+    </div>
+
+    <div>
+        <h3>Pickup Date & Time</h3>
+        <input type="datetime-local" name="dateTimeField"><br>
+        <hr>
+    </div>
+
+    <div>
+        <h3>Pickup and Dropoff Place</h3>
+        <select id="pickUp">
+            <option value="Pick Up Place">Pick Up Place</option>
+            <option value="pickUpOne">Pheonix Mall</option>
+            <option value="pickUpTwo">Pizza Hut</option>
+            <option value="pickUpThree">Marine Drive</option>
+        </select>
+        <span>&#x1F501;</span>
+        <select id="dropoff">
+            <option value="Drop Off Place">Drop Off Place</option>
+            <option value="dropOffOne">Airport</option>
+            <option value="dropOffTwo">Watermelon Beach</option>
+            <option value="dropOffThree">Koko Resort</option>
+        </select>
+        <hr>
+    </div>
+
+    <div>
+        <textarea rows="10" cols="40" maxlength="500" placeholder="Special Instructions"></textarea>
+        <br>
+        <br>
+        <button onclick="onSubmitButtonPressed()">Submit</button>
+    </div>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
