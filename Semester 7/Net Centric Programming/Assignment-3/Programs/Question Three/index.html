@@ -25,7 +25,7 @@
 
     <div>
         <h3>Pickup Date & Time</h3>
-        <input type="datetime-local" name="dateTimeField"><br>
+        <input type="datetime-local" id="dateTimeField"><br>
         <hr>
     </div>
 
@@ -38,7 +38,7 @@
             <option value="pickUpThree">Marine Drive</option>
         </select>
         <span>&#x1F501;</span>
-        <select id="dropoff">
+        <select id="dropOff">
             <option value="Drop Off Place">Drop Off Place</option>
             <option value="dropOffOne">Airport</option>
             <option value="dropOffTwo">Watermelon Beach</option>
@@ -48,7 +48,7 @@
     </div>
 
     <div>
-        <textarea rows="10" cols="40" maxlength="500" placeholder="Special Instructions"></textarea>
+        <textarea rows="10" cols="40" id="instructionsTextarea" maxlength="500" placeholder="Special Instructions"></textarea>
         <br>
         <br>
         <button onclick="onSubmitButtonPressed()">Submit</button>
