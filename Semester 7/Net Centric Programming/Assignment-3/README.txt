@@ -1,13 +1,10 @@
-1.
-Enter  the  form to change  thepassword
+1. Enter  the  form to change  thepassword
 
 oldpassword  : 
 Newpassworld :
 
 oldpassword  shouldbe compared with  the existing passwordandNew  password shouldhave  capital letter
 special character and  a numberand length shouldbe  minimum 6 and  maximum 12.
-
-
 
 2. Enter the form
 
@@ -25,28 +22,28 @@ reset should rest everything onclicking submit the the input given by user shoul
 
 3. Write an HTML program to design online taxi booking form with no styles
 
-� where Username, Phone no and Email id in Text Fields,
+- where Username, Phone no and Email id in Text Fields,
 
-� Type of taxi in RadioButton (fields are car, taxi and tuk tuk),
+- Type of taxi in RadioButton (fields are car, taxi and tuk tuk),
 
-� pickup Date/Time (using input type=�datetime-local�),
+- pickup Date/Time (using input type=�datetime-local�),
 
-� Pickup place and Dropoff place in drop-down lists and
+- Pickup place and Dropoff place in drop-down lists and
 
-� keep special instructions in textArea of maxlength 500.
+- keep special instructions in textArea of maxlength 500.
 
-� Submit the customer information in button click.
+- Submit the customer information in button click.
 
 4. Make an HTML and CSS code to design a web page.
 
-� Divide the browser screen into two frames.
+- Divide the browser screen into two frames.
 
-� The first frame will display the heading.
+- The first frame will display the heading.
 
-� Divide the second frame into two columns.
+- Divide the second frame into two columns.
 
-� The frame on right contains an image of �Home and Kitchen appliances�
+- The frame on right contains an image of �Home and Kitchen appliances�
 
-� The frame on left contains a menu consisting of hyperlinks. Clicking on any one of these hyperlinks will display related information in a new page.
+- The frame on left contains a menu consisting of hyperlinks. Clicking on any one of these hyperlinks will display related information in a new page.
 
 (USE EXYERNAL STYLE SHEET WITH APPROPRIATE ATTRIBUTES TO DISPLAY INFORMATION OF EACH FRAME)
