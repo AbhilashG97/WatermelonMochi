@@ -92,6 +92,6 @@ On substituting these equations into the gradient descent equations we get the f
 
 <p align="center"><img src ="images/linear-regression-final-1.jpg"/></p>
 
-<p align="center"><img src ="images/linear-regression-final-1.jpg"/></p>
+<p align="center"><img src ="images/linear-regression-final-2.jpg"/></p>
 
 Now, we have to keep computing the value of the parameters until they converge.
