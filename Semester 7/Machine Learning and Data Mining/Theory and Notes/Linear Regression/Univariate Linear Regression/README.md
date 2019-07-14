@@ -66,6 +66,32 @@ Below you can find the plot between a cost function and two of its parameters.
 
 <p align="center"><img src ="images/contour-plot.png"/></p>
 
-The countor plot is plotted between two of its parameters. The circular elipses represent the cost function for a particular value of the two parameters. 
+The cotour plot is plotted between two of its parameters. The circular elipses represent the cost function for a particular value of the two parameters. 
 
 :warning: The center of the contour plot represents the values of the parameters for which the cost function is minimum.
+
+## Gradient Descent for Linear Regression
+
+If we were to substitute the cost function into the gradient descent equation, we will get an equation of gradient descent for linear regression. 
+
+The equation of cost function for linear regression is as follows - 
+
+<p align="center"><img src ="images/cost-function.jpg"/></p>
+
+The equation for batch gradient descent is as follows - 
+
+<p align="center"><img src ="images/equation.jpg"/></p>
+
+On solving partial derivatives for the two equations we get the following - 
+
+<p align="center"><img src ="images/linear-regression-equation-1.jpg"/></p>
+
+<p align="center"><img src ="images/linear-regression-equation-2.jpg"/></p>
+
+On substituting these equations into the gradient descent equations we get the following - 
+
+<p align="center"><img src ="images/linear-regression-final-1.jpg"/></p>
+
+<p align="center"><img src ="images/linear-regression-final-1.jpg"/></p>
+
+Now, we have to keep computing the value of the parameters until they converge.
