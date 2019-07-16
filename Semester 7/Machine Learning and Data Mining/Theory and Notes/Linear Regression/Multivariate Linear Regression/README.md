@@ -14,7 +14,10 @@ Also, in case of multivariate linear regression, we follow the following convent
 
 <p align="center"><img src ="images/convention.jpg"/></p>
 
-where i = row and j=column of the feature set.
+where i = row(i.e. 0...m) and j=column(i.e. 0..n) of the feature set.
+
+m=> No of training samples
+n=> No of features
 
 Here is the summary for the same - 
 
@@ -23,3 +26,19 @@ Here is the summary for the same -
 The hypothesis can also be written in the form of matrix multiplication which is as follows - 
 
 <p align="center"><img src ="images/hypothesis-matrix.png"/></p>
+
+## Gradient Descent 
+
+The batch gradient descent algorithm for multivariate linear regression only requires a slight modification. Here, we calculate the partial derivative in terms of all the feature columns. 
+
+The equation for gradient equation then becomes somewhat like this - 
+
+<p align="center"><img src ="images/gradient-descent.jpg"/></p>
+
+```Where j=0, 1, 2, 3, ..... n columns```
+
+:warning: And the values of theta will have to be updated simultaneously. 
+
+Again, the below mentioned picture summarizes gradient descent for the multivariate linear regression quite well
+
+<p align="center"><img src ="images/gradient-descent-algorithm.png"/></p>
