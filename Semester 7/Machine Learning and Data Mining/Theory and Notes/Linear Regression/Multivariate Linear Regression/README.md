@@ -42,3 +42,26 @@ The equation for gradient equation then becomes somewhat like this -
 Again, the below mentioned picture summarizes gradient descent for the multivariate linear regression quite well
 
 <p align="center"><img src ="images/gradient-descent-algorithm.png"/></p>
+
+## Features and Polynomial Regression
+
+Apart from feature scaling and mean normalization we can also make use of another technique to enhance the performance of the gradient descent. 
+
+We can combine features together to obtain a new feature set. For instance, we can take two features x<sub>1</sub>, x<sub>2</sub> and combine them to obtain a new feature x<sub>3</sub>. 
+
+# Polynomial Regression
+
+In certain cases, a linear hypothesis might not fit the data well and so we may have to choose polynomial hypothesis ( i.e. quadratic/cubic). 
+
+A polynomial hypothesis can model the data set well in certain cases. 
+
+Below are a few exmaples of polynomial regression -
+
+<p align="center"><img src ="images/poly-reg-1.jpg"/></p>
+
+<p align="center"><img src ="images/poly-reg-2.jpg"/></p>
+
+
+We however don't have to manually choose the type of the hypothesis (i.e. whether it should be linear/quadratic/cubic). The type of the hypothesis can be choosen automatically by another algorithm.
+
+:warning: In case of polynomial regression feature scaling and mean normalization become very important as the value of each feature set becomes quite large.
