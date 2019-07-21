@@ -27,6 +27,22 @@ The hypothesis can also be written in the form of matrix multiplication which is
 
 <p align="center"><img src ="images/hypothesis-matrix.png"/></p>
 
+## Cost Function
+
+The cost function for multivariate linear regression is similar to the cost function for univariate linear regression. Here, it includes all the features of present in the data set. 
+
+The cost function is given by - 
+
+<p align="center"><img src ="images/cost-function-2.jpg"/></p>
+
+The cost function can also be written like this - 
+
+<p align="center"><img src ="images/cost-function-1.jpg"/></p>
+
+Here, the ```j``` points to the number of columns(or features) in the data set. 
+
+:warning: Please note that ```j``` begins from 0. Also, the value of x<sub>j</sub> is ```1```.   
+
 ## Gradient Descent 
 
 The batch gradient descent algorithm for multivariate linear regression only requires a slight modification. Here, we calculate the partial derivative in terms of all the feature columns. 
@@ -65,3 +81,7 @@ Below are a few exmaples of polynomial regression -
 We however don't have to manually choose the type of the hypothesis (i.e. whether it should be linear/quadratic/cubic). The type of the hypothesis can be choosen automatically by another algorithm.
 
 :warning: In case of polynomial regression feature scaling and mean normalization become very important as the value of each feature set becomes quite large.
+
+# Resources
+
+This is a really good post which covers a lot about [linear regression](https://machinelearningmedium.com/2017/08/23/multivariate-linear-regression/).
