@@ -129,7 +129,7 @@ Other algorithms that can be used instead of gradient descent are -
 
 ## Multiclass Classification: One vs All
 
-Now we will approach the classification of data when we have more than two categories. Instead of y = {0,1} we will expand our definition so that y = {0,1...n}
+Here we will see the classification of data when we have more than two categories. Instead of y = {0,1} we will expand our definition to y = {0,1...n}
 
 <p align="center"><img src ="images/multiclass-classification.png">
 
