@@ -234,3 +234,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# LibreOffice locks
+.~lock.*#
